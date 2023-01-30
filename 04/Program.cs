@@ -4,7 +4,7 @@
 
 Console.Clear();
 
-int[,,] array = GetArray(3, 3, 3, 0, 100);
+int[,,] array = GetArray(2, 2, 2, 10, 100);
 GetLineByLine(array);
 PrintArray(array);
 
@@ -12,11 +12,11 @@ PrintArray(array);
 int[,,] GetArray(int x, int y, int z, int minValue, int maxValue)
 {
     int[,,] result = new int[x, y, z];
-    for (int i = 0; i < x; i++)
+    for (int i = 0; i < result.GetLength(0); i++)
     {
-        for (int j = 0; j < y; j++)
+        for (int j = 0; j < result.GetLength(1); j++)
         {
-            for (int k = 0; k < z; k++)
+            for (int k = 0; k < result.GetLength(2); k++)
             {
                 result[i, j, k] = new Random().Next(minValue, maxValue);
             }
@@ -31,10 +31,9 @@ void PrintArray(int[,,] array)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            Console.Write($"X({i}) Y({j}) ");
             for (int k = 0; k < array.GetLength(2); k++)
             {
-                Console.Write($"Z({k}) = {array[i, j, k]}; ");
+                Console.Write($"{array[i, j, k]} ({i},{j},{k}) ");
             }
             Console.WriteLine();
         }
